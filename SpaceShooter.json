@@ -102,6 +102,19 @@
           "identifier": "https://asset-resources.gdevelop.io/public-resources/Space Shooter/PNG/Lasers/ce93e902fd396d92508643234ee1457f00ba9673365c7e881cc659a02f53a645_Red laser 01.png",
           "name": "Red laser 01.png"
         }
+      },
+      {
+        "alwaysLoaded": false,
+        "file": "assets/tiled_dark purple space.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "tiled_dark purple space.png",
+        "smoothed": true,
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Space Shooter/Backgrounds/59a7d361a270a586a7079a0b2b074758f56d5a1d9f9b83811686cfe95fdfce9a_tiled_dark purple space.png",
+          "name": "tiled_dark purple space.png"
+        }
       }
     ],
     "resourceFolders": []
@@ -137,7 +150,7 @@
       "title": "",
       "v": 209,
       "uiSettings": {
-        "grid": false,
+        "grid": true,
         "gridType": "rectangular",
         "gridWidth": 32,
         "gridHeight": 32,
@@ -145,8 +158,8 @@
         "gridOffsetY": 0,
         "gridColor": 10401023,
         "gridAlpha": 0.8,
-        "snap": false,
-        "zoomFactor": 0.6040838749988868,
+        "snap": true,
+        "zoomFactor": 0.379712100194794,
         "windowMask": false
       },
       "objectsGroups": [],
@@ -163,6 +176,38 @@
           "x": 633,
           "y": 479,
           "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 736,
+          "layer": "Background",
+          "name": "DarkPurpleSpace",
+          "persistentUuid": "8ed1fad6-9dd7-4b74-91d5-763f3d5e1f1e",
+          "width": 1280,
+          "x": 0,
+          "y": 0,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 736,
+          "layer": "Background",
+          "name": "DarkPurpleSpace",
+          "persistentUuid": "febabe5f-75ec-4c27-994d-cb7de16219e7",
+          "width": 1280,
+          "x": 0,
+          "y": 736,
+          "zOrder": 2,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -383,6 +428,17 @@
               ]
             }
           ]
+        },
+        {
+          "assetStoreId": "13cd7e810ccf090c3a8b9df66aa427613de5271d59507471a06f9ddbbccbcbf4",
+          "height": 128,
+          "name": "DarkPurpleSpace",
+          "texture": "tiled_dark purple space.png",
+          "type": "TiledSpriteObject::TiledSprite",
+          "width": 128,
+          "variables": [],
+          "effects": [],
+          "behaviors": []
         }
       ],
       "objectsFolderStructure": {
@@ -396,6 +452,9 @@
           },
           {
             "objectName": "RedLaser01"
+          },
+          {
+            "objectName": "DarkPurpleSpace"
           }
         ]
       },
@@ -413,9 +472,49 @@
             "includeConfig": 0
           },
           "target": "EnemiesEvents"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "BackgroundEvents"
         }
       ],
       "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Background",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Light",
+              "doubleParameters": {
+                "elevation": 45,
+                "intensity": 1,
+                "rotation": 0
+              },
+              "stringParameters": {
+                "groundColor": "64;64;64",
+                "skyColor": "255;255;255",
+                "top": "Y-"
+              },
+              "booleanParameters": {}
+            }
+          ]
+        },
         {
           "ambientLightColorB": 200,
           "ambientLightColorG": 200,
@@ -959,6 +1058,81 @@
               "parameters": [
                 "BlueSpaceship1",
                 ""
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "associatedLayout": "Untitled scene",
+      "lastChangeTimeStamp": 0,
+      "name": "BackgroundEvents",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Aplicamos uma força de movimento do eixo Y do backround para dar a ilusão de movimento da nave. Importante: Para que esse código funcione devemos duplicar a imagem do background em nossa cena."
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "AddForceXY"
+              },
+              "parameters": [
+                "DarkPurpleSpace",
+                "0",
+                "150",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Caso o background ultrapasse a altura da cena, retornamos com o background para antes da posição do eixo Y = 0."
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "PosY"
+              },
+              "parameters": [
+                "DarkPurpleSpace",
+                ">",
+                "SceneWindowHeight()"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "MettreY"
+              },
+              "parameters": [
+                "DarkPurpleSpace",
+                "=",
+                "-SceneWindowHeight()"
               ]
             }
           ]
